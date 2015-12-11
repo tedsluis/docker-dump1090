@@ -19,8 +19,7 @@ The following feature are added to the original version:
 # Usage
 
 Download the dockerfile and build the image yourself:  
-
-$ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile
+$ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
 $ docker build -t tedsluis/dump1090-mutability:v1 .
 
 Run it:    
