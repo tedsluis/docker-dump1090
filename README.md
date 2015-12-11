@@ -3,7 +3,7 @@
 This dockerfile is used to build a docker image of dump1090-mutability v1.15 modified by Ted Sluis:
 https://github.com/tedsluis/dump1090
 
-This version is based on Oliver Jowett -also known as Obj- dump1090-mutability v1.15:
+This version is based on Oliver Jowett -also known as Obj- dump1090-mutability v1.15: 
 https://github.com/mutability/dump1090
 
 The following feature are added to the original version:
