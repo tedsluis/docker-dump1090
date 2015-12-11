@@ -16,6 +16,11 @@ The following feature are added to the original version:
 * Toggle plane colors between Altitude colors and adb-s/mlat position colors.
 * Toggle the heatmap, the range/altitude view and the range rings on and off (including their panel and legends).
 
+It is build on the latest Debian image according the default installation instruction by Obj. 
+Some packages were added, because they are not default available in the official Debian Docker image.
+The way in which the Lightttpd and Dump1090 services are started is slidely different as is usual with containers.
+The configuration is of course without user interaction.
+
 # Usage
 
 Download the dockerfile and build the image yourself:  
@@ -32,19 +37,20 @@ http://IPADDRESS:8080/dump1090
 
 # Notes
 
-This dockerfile will override the default Dump1090 config files:
-/usr/share/dump1090-mutability/html/config.js   
-/etc/default/dump1090-mutability   
+This dockerfile will override the default Dump1090 config files: 
+*/usr/share/dump1090-mutability/html/config.js   
+*/etc/default/dump1090-mutability   
 
-This way my personal settings like lat/lon, metric and the location of my radarview.kml file are configured.
+This way my personal settings like lat/lon, metric and the location of my 'radarview.kml' file are configured.
 
-A heatmap file is downloaded from my personal dropbox to this image.
+A 'heatmapdata.csv' file is downloaded from my personal dropbox to this image. 
+The 'raderview.kml' is hosted from the same dropbox. It is not copied to the container, since it must be publicly accessible for the Google Map API.
 
 This dump1090 doesn't collect ADS-B data using a RTL SDR receiver. 
 Instead it receives data using the BEAST_INPUT_PORT (30104, previously known as 30004).
 In side the container I use netcat to copy 30005 traffic from an other dump1090 to the local 30104 BEAST input port.
 
-Of cource you can modify the dockerfile and configure the location of your files and BEAST IP address.
+Of course you should modify the dockerfile and configure the location of your own config files, heatmapdata.csv and radarview.kml files and your own remote BEAST IP address.
 
 Ted Sluis
 
