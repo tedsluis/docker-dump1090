@@ -3,7 +3,7 @@
 This dockerfile is used to build a docker image of dump1090-mutability v1.15 modified by Ted Sluis:
 https://github.com/tedsluis/dump1090
 
-This version is based on Oliver Jowett -also known as Obj- dump1090-mutability v1.15: 
+This version is based on Oliver Jowett -also known as Obj- dump1090-mutability v1.15:
 https://github.com/mutability/dump1090
 
 The following feature are added to the original version:
@@ -37,7 +37,7 @@ http://IPADDRESS:8080/dump1090
 
 # Notes
 
-This dockerfile will override the default Dump1090 config files: 
+This dockerfile will override the default Dump1090 config files:
 */usr/share/dump1090-mutability/html/config.js   
 */etc/default/dump1090-mutability   
 
@@ -46,11 +46,15 @@ This way my personal settings like lat/lon, metric and the location of my 'radar
 A 'heatmapdata.csv' file is downloaded from my personal dropbox to this image. 
 The 'raderview.kml' is hosted from the same dropbox. It is not copied to the container, since it must be publicly accessible for the Google Map API.
 
-This dump1090 doesn't collect ADS-B data using a RTL SDR receiver. 
-Instead it receives data using the BEAST_INPUT_PORT (30104, previously known as 30004).
-In side the container I use netcat to copy 30005 traffic from an other dump1090 to the local 30104 BEAST input port.
-
 Of course you should modify the dockerfile and configure the location of your own config files, heatmapdata.csv and radarview.kml files and your own remote BEAST IP address.
+
+# 30005 Data source
+
+This dump1090 doesn't collect ADS-B data using an antenna and a RTL SDR receiver. 
+Instead it receives data using the BEAST_INPUT_PORT (30104, previously known as 30004).
+In side the container I use netcat to copy 30005 traffic from an remote dump1090 to the local 30104 BEAST input port.
+The remote dump1090 is located in the Google cloud running on a 60 days free trail. This remote dump1090 gets his 30005 data from a raspberry pi located in my home.
+
 
 Ted Sluis
 
