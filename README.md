@@ -32,7 +32,7 @@ $ docker run -p 80:8080 -p 30104:30104 tedsluis/dump1090-mutability:v1
 
 (if you don't build the image yourself it will be downloaded from the Docker Hub)
 
-Use the GUI:
+To use th GUI, go to your browser and type:
 http://IPADDRESS:8080/dump1090 
 
 # Notes
@@ -53,8 +53,7 @@ Of course you should modify the dockerfile and configure the location of your ow
 This dump1090 doesn't collect ADS-B data using an antenna and a RTL SDR receiver. 
 Instead it receives data using the BEAST_INPUT_PORT (30104, previously known as 30004).
 In side the container I use netcat to copy 30005 traffic from an remote dump1090 to the local 30104 BEAST input port.
-The remote dump1090 is located in the Google cloud running on a 60 days free trail. This remote dump1090 gets his 30005 data from a raspberry pi located in my home.
-
+The remote dump1090 is located in the Google cloud running on a 60 days free trail (valid until 9 februari 2016 and most likely continued with an other free trail account). This remote dump1090 gets his 30005 BEAST data from a raspberry pi located in my home in Utrecht, in the Netherlands. I leave this service available as long as it is not abused.
 
 Ted Sluis
 
