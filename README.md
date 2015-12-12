@@ -24,13 +24,12 @@ The configuration is of course without user interaction.
 Docker Hub:
 https://hub.docker.com/r/tedsluis/dump1090-mutability
 
-Youtube:
-https://www.youtube.com/watch?v=Qz4XSFRjLTI
 
 FlightAware ADS-B flight tracking forum, Heatmap & range/altitude view for dump1090-mutability v1.15:
 http://discussions.flightaware.com/post180185.html
 
 Using the dump1090-mutability with a heatmap and radarview:
+Youtube: https://www.youtube.com/watch?v=Qz4XSFRjLTI
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Qz4XSFRjLTI"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg" 
 alt="dump1090-mutability with heatmap & radarview" width="600" height="400" border="10" /></a>
@@ -77,6 +76,7 @@ The remote dump1090 is located in the Google cloud running on a 60 days free tra
 # Build & run video
 
 Build & run the dump1090-mutability docker image from scratch:
+Youtube: https://www.youtube.com/watch?v=h4YyFDTS6CQ
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=h4YyFDTS6CQ"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090-build.png"
 alt="dump1090-mutability with heatmap & radarview" width="600" height="400" border="10" /></a>
