@@ -29,7 +29,7 @@ http://discussions.flightaware.com/post180185.html
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Qz4XSFRjLTI"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg" 
-alt="dump1090-mutability with heatmap & radarview" width="240" height="180" border="10" /></a>
+alt="dump1090-mutability with heatmap & radarview" width="600" height="400" border="10" /></a>
 
 # Usage
 
