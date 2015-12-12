@@ -27,6 +27,10 @@ https://www.youtube.com/watch?v=Qz4XSFRjLTI
 FlightAware ADS-B flight tracking forum, Heatmap & range/altitude view for dump1090-mutability v1.15:
 http://discussions.flightaware.com/post180185.html
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Qz4XSFRjLTI"
+ target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg" 
+alt="dump1090-mutability with heatmap & radarview" width="240" height="180" border="10" /></a>
+
 # Usage
 
 Download the dockerfile and build the image yourself:  
@@ -64,7 +68,7 @@ The remote dump1090 is located in the Google cloud running on a 60 days free tra
 
 note: You can changes the setting remote BEAST input source in the startdump1090.sh and rebuild the docker image. Or you can specify you own remote source dump1090 IP address like this:
 
-$ docker run -d -h dump01 -p 8080:80 -p 30104:30104 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh <your remote source dump1090 IP>
+$ docker run -d -h dump01 -p 8080:80 -p 30104:30104 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
 
 Ted Sluis
 
