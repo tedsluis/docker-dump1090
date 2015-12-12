@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# note: De default remote dump1090 is a dump1090 hosted on the google cloud. It may not be up and running.
+# note: The default remote dump1090 is a dump1090 hosted on the google cloud. It may not be up and running.
 # Set our own IP address of your dump1090 source here and build the docker image or 
 # specify this /usr/share/dump1090-mutability/startdump1090.sh script with the IP address of your dump1090 source while you launch the container.
 #
@@ -32,7 +32,7 @@ else
 	exit 3;
 fi
 #
-echo "Trying $ip."
+echo "Trying to get BEAST-format data from ${ip}:30005."
 #
 # Start the web server:
 lighttpd -D -f /etc/lighttpd/lighttpd.conf &
