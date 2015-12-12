@@ -76,7 +76,7 @@ The remote dump1090 is located in the Google cloud running on a 60 days free tra
 
 Build & run the dump1090-mutability docker image from scratch:
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=h4YyFDTS6CQ"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg"
+ target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090-build.png"
 alt="dump1090-mutability with heatmap & radarview" width="600" height="400" border="10" /></a>
  
 
