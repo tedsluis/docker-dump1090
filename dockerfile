@@ -1,11 +1,16 @@
 # More info at:
 # https://github.com/tedsluis/docker-dump1090
 # https://hub.docker.com/r/tedsluis/dump1090-mutability
+# http://discussions.flightaware.com/post180185.html
 
-# Build:  $ docker build -t tedsluis/dump1090-mutability:v1 .
+# Build it yourself:  
+#                      $ docker build -t tedsluis/dump1090-mutability:v1 .
 
-# Run:    $ docker run -d -h dump01 -p 8080:80 -p 30104:30104 tedsluis/dump1090-mutability:v1
-# or :    $ docker run -d -h dump01 -p 8080:80 -p 30104:30104 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh <IP address of your own remote dump1090 source>
+# Run it:    
+#                      $ docker run -d -h dump01 -p 8080:80 -p 30104:30104 tedsluis/dump1090-mutability:v1
+
+# Or run it with a different BEAST source:    
+#                      $ docker run -d -h dump01 -p 8080:80 -p 30104:30104 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh <IP address of your own remote dump1090 source>
 
 FROM debian:latest
 
