@@ -19,7 +19,7 @@ if [ $# -eq 1 ] ; then
 		exit 2;
 	fi
 else 	
-	# Default IP address of remote dump1090 source:
+	# Default IP address of remote dump1090 source (currently a dump1090 instance in the google cloud):
 	ip="130.211.68.85"
 fi
 #
