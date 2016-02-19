@@ -71,7 +71,7 @@ Check if they are really running:
 $ docker ps
 ````
 
-They all get a different host name and port name:
+They all get a different port name which you can use in your web browser:
 
 http://IPADDRESS_DOCKERHOST:8081/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8082/dump1090/gmap.html
