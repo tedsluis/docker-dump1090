@@ -51,12 +51,14 @@ $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1
 
 note: You can changes the setting remote BEAST input source in the startdump1090.sh and rebuild the docker image. Or you can specify you own remote source dump1090 IP address like this:
 
+````
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
+````
 
 To use th GUI, go to your browser and type:
 http://IPADDRESS_DOCKERHOST:8080/dump1090 
 
-Run multiple dump1090 docker containers on the same host (past the following 4 lines to the commandline all at ones):
+To run multiple dump1090 docker containers on the same host (past the following 4 lines to the commandline all at ones):
 ````
 for i in {81..99} 
 do 
@@ -64,12 +66,13 @@ docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1
 done
 ```` 
 
-Check if they are realy running:
+Check if they are really running:
 ````
 $ docker ps
 ````
 
 They all get a different host name and port name:
+
 http://IPADDRESS_DOCKERHOST:8081/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8082/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8084/dump1090/gmap.html
@@ -89,7 +92,7 @@ http://IPADDRESS_DOCKERHOST:8097/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8098/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8099/dump1090/gmap.html
 
-Check the resource consumption per docker container and notice that it is very low compare to a VM or a raspberry.
+Check the resource consumption per docker container and notice that it is very low compared to a VM or a raspberry:
 ````
 $ docker stats $(docker ps -a -q)
 ````
@@ -99,7 +102,7 @@ Only the dump1090, the lighttp web server and the netcat (nc) services are runni
 docker top <container_id>
 ````
 
-Stop a container using:
+To stop a container, use:
 ````
 docker stop <container_id>
 ````
@@ -132,8 +135,9 @@ docker rm $(docker ps -a -q)
 # Notes
 
 This dockerfile will override the default Dump1090 config files:
-*/usr/share/dump1090-mutability/html/config.js   
-*/etc/default/dump1090-mutability   
+
+* /usr/share/dump1090-mutability/html/config.js   
+* /etc/default/dump1090-mutability   
 
 This way my personal settings like lat/lon, metric and the location of my 'radarview.kml' file are configured.
 
