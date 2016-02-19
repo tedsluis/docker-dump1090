@@ -20,7 +20,7 @@ if [ $# -eq 1 ] ; then
 	fi
 else 	
 	# Default IP address of remote dump1090 source:
-	ip="104.155.90.204"
+	ip="130.211.68.85"
 fi
 #
 # Check if IP address is reachable:

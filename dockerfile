@@ -7,10 +7,10 @@
 #                      $ docker build -t tedsluis/dump1090-mutability:v1 .
 
 # Run it:    
-#                      $ docker run -d -h dump01 -p 8080:80 -p 30104:30104 tedsluis/dump1090-mutability:v1
+#                      $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1
 
 # Or run it with a different BEAST source:    
-#                      $ docker run -d -h dump01 -p 8080:80 -p 30104:30104 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh <IP address of your own remote dump1090 source>
+#                      $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh <IP address of your own remote dump1090 source>
 
 FROM debian:latest
 

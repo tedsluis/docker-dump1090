@@ -41,13 +41,13 @@ $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerf
 $ docker build -t tedsluis/dump1090-mutability:v1 .
 
 Run it:    
-$ docker run -d -h dump01 -p 8080:80 -p 30104:30104 tedsluis/dump1090-mutability:v1
+$ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1
 
 (if you don't build the image yourself it will be downloaded from the Docker Hub)
 
 note: You can changes the setting remote BEAST input source in the startdump1090.sh and rebuild the docker image. Or you can specify you own remote source dump1090 IP address like this:
 
-$ docker run -d -h dump01 -p 8080:80 -p 30104:30104 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
+$ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
 
 To use th GUI, go to your browser and type:
 http://IPADDRESS:8080/dump1090 
