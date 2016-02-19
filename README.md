@@ -37,11 +37,15 @@ alt="dump1090-mutability with heatmap & radarview" width="600" height="400" bord
 # Usage
 
 Download the dockerfile and build the image yourself:  
+````
 $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
 $ docker build -t tedsluis/dump1090-mutability:v1 .
+````
 
 Run it:    
-$ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1
+````
+$ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1
+````
 
 (if you don't build the image yourself it will be downloaded from the Docker Hub)
 
@@ -50,7 +54,80 @@ note: You can changes the setting remote BEAST input source in the startdump1090
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
 
 To use th GUI, go to your browser and type:
-http://IPADDRESS:8080/dump1090 
+http://IPADDRESS_DOCKERHOST:8080/dump1090 
+
+Run multiple dump1090 docker containers on the same host (past the following 4 lines to the commandline all at ones):
+````
+for i in {81..99} 
+do 
+docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1   
+done
+```` 
+
+Check if they are realy running:
+````
+$ docker ps
+````
+
+They all get a different host name and port name:
+http://IPADDRESS_DOCKERHOST:8081/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8082/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8084/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8085/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8086/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8087/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8088/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8089/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8090/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8091/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8092/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8093/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8094/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8095/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8096/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8097/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8098/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8099/dump1090/gmap.html
+
+Check the resource consumption per docker container and notice that it is very low compare to a VM or a raspberry.
+````
+$ docker stats $(docker ps -a -q)
+````
+
+Only the dump1090, the lighttp web server and the netcat (nc) services are running:
+````
+docker top <container_id>
+````
+
+Stop a container using:
+````
+docker stop <container_id>
+````
+
+Or stop them all at ones:
+````
+docker stop $(docker ps -a -q)
+````
+
+Or kill them all at ones (much faster):
+````
+docker kill $(docker ps -a -q)
+````
+
+Start a docker container again:
+```` 
+docker start <container_id>
+````
+
+Start them all at ones:
+````
+docker start $(docker ps -a -q)
+````
+
+Remove the containers all at ones:
+````
+docker rm $(docker ps -a -q)
+````
 
 # Notes
 
