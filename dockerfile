@@ -2,6 +2,7 @@
 # https://github.com/tedsluis/docker-dump1090
 # https://hub.docker.com/r/tedsluis/dump1090-mutability
 # http://discussions.flightaware.com/post180185.html
+# https://www.youtube.com/watch?v=h4YyFDTS6CQ
 
 # Build it yourself:  
 #                      $ docker build -t tedsluis/dump1090-mutability:v1 .
