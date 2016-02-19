@@ -18,7 +18,7 @@ LOGFILE="/var/log/dump1090-mutability.log"
 
 # RTLSDR device index or serial number to use
 # If set to "none", dump1090 will be started in --net-only mode
-DEVICE="none" 
+DEVICE="none"  
 
 # RTLSDR gain in dB.
 # If set to "max" (the default) the maximum supported gain is used.
