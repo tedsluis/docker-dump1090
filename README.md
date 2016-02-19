@@ -92,10 +92,16 @@ http://IPADDRESS_DOCKERHOST:8097/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8098/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8099/dump1090/gmap.html
 
+You are probably thinking "why run 20 or more dump1090 containers on one host?". Well, for a couple of reasons:
+
+* To proof that it is possible without any performance issue. Infact you can run hundreds of dump1090 containers on a linux host with just 4GB of RAM.
+* To show new possibilities. Imagine running hundreds of dump1090 containers in the cloud serving thousands of visitors. A load balancer could be used to distribute the load over the dump1090 instances.
+
 Check the resource consumption per docker container and notice that it is very low compared to a VM or a raspberry:
 ````
 $ docker stats $(docker ps -a -q)
 ````
+A containers consums only a view tens of kilobytes.
 
 Only the dump1090, the lighttp web server and the netcat (nc) services are running:
 ````
