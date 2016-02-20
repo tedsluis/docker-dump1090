@@ -45,9 +45,13 @@ Youtube: https://www.youtube.com/watch?v=Qz4XSFRjLTI
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg" 
 alt="dump1090-mutability with heatmap & radarview" width="600" height="400" border="10" /></a>
 
+# Live view
+Watch my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.68.85/dump1090/gmap.html (This dump1090 runs on a 60-day free trail that is available until 9 april 2016)
+
+
 # Usage
 
-## Download and build
+### Download and build
 This step is optional. You can skip this and continue at 'Run it:'.   
 Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without):  
 ````
@@ -62,7 +66,7 @@ $ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
 or
 $ docker build -t tedsluis/dump1090-mutability:v1.15 .
 ````
-## Run it
+### Run it
 Run it (select the version you want):    
 If you don't build the image yourself it will be downloaded from the Docker Hub.
 ````
@@ -79,12 +83,12 @@ or
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
 ````
 
-## Use it
+### Use it
 To use th GUI, go to your browser and type:
 http://IPADDRESS_DOCKERHOST:8080/dump1090 
 
 
-## Run multiple containers
+### Run multiple containers
 To run multiple dump1090 docker containers on the same host (past the following 4 lines to the commandline all at ones):
 ````
 for i in {81..99} 
@@ -124,7 +128,7 @@ You are probably thinking "why run 20 or more dump1090 containers on one host?".
 * To proof that it is possible without any performance issue. Infact you can run hundreds of dump1090 containers on a linux host with just 4GB of RAM.
 * To show new possibilities. Imagine running hundreds of dump1090 containers in the cloud serving thousands of visitors. A load balancer could be used to distribute the load over the dump1090 instances.
 
-## Manage the containers
+### Manage the containers
 Check the resource consumption per docker container and notice that it is very low compared to a VM or a raspberry:
 ````
 $ docker stats $(docker ps -a -q)
@@ -198,5 +202,5 @@ alt="dump1090-mutability with heatmap & radarview" width="600" height="400" bord
  
 
 Ted Sluis
-
+ted.sluis@gmail.com
 
