@@ -124,6 +124,7 @@ You are probably thinking "why run 20 or more dump1090 containers on one host?".
 * To proof that it is possible without any performance issue. Infact you can run hundreds of dump1090 containers on a linux host with just 4GB of RAM.
 * To show new possibilities. Imagine running hundreds of dump1090 containers in the cloud serving thousands of visitors. A load balancer could be used to distribute the load over the dump1090 instances.
 
+## Manage the containers
 Check the resource consumption per docker container and notice that it is very low compared to a VM or a raspberry:
 ````
 $ docker stats $(docker ps -a -q)
