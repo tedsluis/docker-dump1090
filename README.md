@@ -9,7 +9,7 @@ These docker images are based on dump1090-mutability v1.15 by Oliver Jowett -als
 * https://github.com/mutability/dump1090 (version v1.15)
 * https://github.com/tedsluis/dump1090 (version v1.15_heatmaprangeview)
 
-Note: You must specify the dump1090 version (1.15 or v1.15_heatmaprangeview) upon build and it will automaticly use the correct source code.
+Note: You must use the desired github source at buid time and specify the dump1090 version (1.15 or v1.15_heatmaprangeview) upon runtime.
 
 It is build on the latest Debian image (X86_64,ADM64) according the default installation instruction by Obj. Some packages were added, because they are not default available in the official Debian Docker image. The way in which the Lighttpd and Dump1090 services are started is slidely different as is usual with containers. The configuration is of course without user interaction.
 
@@ -47,15 +47,21 @@ alt="dump1090-mutability with heatmap & radarview" width="600" height="400" bord
 
 # Usage
 
-Download the dockerfile and build the image yourself:  
+Download the dockerfile (select the version you want):  
 ````
 $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
-$ docker build --build-arg DUMP1090VERSION=v1.15_heatmaprangeview -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
 or
-$ docker build --build-arg DUMP1090VERSION=v1.15 -t tedsluis/dump1090-mutability:v1.15 .
+$ wget -O dockerfile https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.org
 ````
 
-Run it:    
+Build the image (select the version you want):
+````
+$ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
+or
+$ docker build -t tedsluis/dump1090-mutability:v1.15 .
+````
+
+Run it (select the version you want):    
 ````
 $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview
 or
