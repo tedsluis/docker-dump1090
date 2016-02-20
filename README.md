@@ -1,12 +1,21 @@
 # Docker image for Dump1090 Mutability
 
-This dockerfile is used to build a docker image of dump1090-mutability v1.15 modified by Ted Sluis:
-https://github.com/tedsluis/dump1090
+Try the dump1090 application in an easy way. You only need a X86_64 or AMD64 Linux docker host. No RTL-SDR receiver required.
 
-This version is based on Oliver Jowett -also known as Obj- dump1090-mutability v1.15:
-https://github.com/mutability/dump1090
+While running this dump1090 docker container you are able to view airplanes in your web browser. You can always build and run in minutes from the latest source code.
 
-The following feature are added to the original version:
+These docker images are based on dump1090-mutability v1.15 by Oliver Jowett -also known as Obj- and my own fork with heatmap and rangeview:
+
+* https://github.com/mutability/dump1090 (version v1.15)
+* https://github.com/tedsluis/dump1090 (version v1.15_heatmaprangeview)
+
+Note: You must specify the dump1090 version (1.15 or v1.15_heatmaprangeview) upon build and it will automaticly use the correct source code.
+
+It is build on the latest Debian image (X86_64,ADM64) according the default installation instruction by Obj. Some packages were added, because they are not default available in the official Debian Docker image. The way in which the Lighttpd and Dump1090 services are started is slidely different as is usual with containers. The configuration is of course without user interaction.
+
+# Heatmap & rangeview features
+
+In my fork of dump1090-mutability v1.15 I have added the following features:
 * Display a csv heatmap file.
 * Adjust the opacity, intensity and radius of the heatmap from a movable panel.
 * Load a heatmap from the dump1090 web directory or from the heatmap panel in the browser.
@@ -16,17 +25,19 @@ The following feature are added to the original version:
 * Toggle plane colors between Altitude colors and adb-s/mlat position colors.
 * Toggle the heatmap, the range/altitude view and the range rings on and off (including their panel and legends).
 
-It is build on the latest Debian Jessie image (X86) according the default installation instruction by Obj. 
-Some packages were added, because they are not default available in the official Debian Docker image.
-The way in which the Lightttpd and Dump1090 services are started is slidely different as is usual with containers.
-The configuration is of course without user interaction.
+# Docker Hub
 
-Docker Hub:
+The images are available at docker hub:
 https://hub.docker.com/r/tedsluis/dump1090-mutability
 
+# FlightAware ADS-B flight tracking forum
 
-FlightAware ADS-B flight tracking forum, Heatmap & range/altitude view for dump1090-mutability v1.15:
-http://discussions.flightaware.com/post180185.html
+At FlightAware ADS-B flight tracking forum you can find two related topics:
+
+* [Heatmap & range/altitude view for dump1090-mutability v1.15](http://discussions.flightaware.com/post180185.html)
+* [Running Dump1090 Mutability in Docker container](http://discussions.flightaware.com/post184999.html#p184999)
+
+# Screenshot and video
 
 Using the dump1090-mutability with a heatmap and radarview:
 Youtube: https://www.youtube.com/watch?v=Qz4XSFRjLTI
@@ -39,12 +50,16 @@ alt="dump1090-mutability with heatmap & radarview" width="600" height="400" bord
 Download the dockerfile and build the image yourself:  
 ````
 $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
-$ docker build -t tedsluis/dump1090-mutability:v1 .
+$ docker build --build-arg DUMP1090VERSION=v1.15_heatmaprangeview -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
+or
+$ docker build --build-arg DUMP1090VERSION=v1.15 -t tedsluis/dump1090-mutability:v1.15 .
 ````
 
 Run it:    
 ````
-$ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1
+$ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview
+or
+$ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15
 ````
 
 (if you don't build the image yourself it will be downloaded from the Docker Hub)
@@ -52,7 +67,9 @@ $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1
 note: You can changes the setting remote BEAST input source in the startdump1090.sh and rebuild the docker image. Or you can specify you own remote source dump1090 IP address like this:
 
 ````
-$ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
+$ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
+or
+$ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
 ````
 
 To use th GUI, go to your browser and type:
@@ -62,7 +79,7 @@ To run multiple dump1090 docker containers on the same host (past the following 
 ````
 for i in {81..99} 
 do 
-docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1   
+docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1.15_heatmaprangeview   
 done
 ```` 
 
