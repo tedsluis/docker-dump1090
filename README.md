@@ -47,7 +47,9 @@ alt="dump1090-mutability with heatmap & radarview" width="600" height="400" bord
 
 # Usage
 
-Download the dockerfile (select the version you want):  
+## Download and build
+This step is optional. You can skip this and continue at 'Run it:'.
+Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without):  
 ````
 $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
 or
@@ -60,15 +62,14 @@ $ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
 or
 $ docker build -t tedsluis/dump1090-mutability:v1.15 .
 ````
-
+## Run it
 Run it (select the version you want):    
+If you don't build the image yourself it will be downloaded from the Docker Hub.
 ````
 $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview
 or
 $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15
 ````
-
-(if you don't build the image yourself it will be downloaded from the Docker Hub)
 
 note: You can changes the setting remote BEAST input source in the startdump1090.sh and rebuild the docker image. Or you can specify you own remote source dump1090 IP address like this:
 
@@ -78,6 +79,7 @@ or
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
 ````
 
+## Use it
 To use th GUI, go to your browser and type:
 http://IPADDRESS_DOCKERHOST:8080/dump1090 
 
@@ -89,6 +91,7 @@ docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1.15_heatm
 done
 ```` 
 
+## Check it
 Check if they are really running:
 ````
 $ docker ps
