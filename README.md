@@ -46,7 +46,8 @@ Youtube: https://www.youtube.com/watch?v=Qz4XSFRjLTI
 alt="dump1090-mutability with heatmap & radarview" width="600" height="400" border="10" /></a>
 
 # Live view
-Watch my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.68.85/dump1090/gmap.html (This dump1090 runs on a 60-day free trail that is available until 9 april 2016)
+Watch my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.68.85/dump1090/gmap.html   
+(This dump1090 runs on a 60-day free trail that is available until 9 april 2016)
 
 
 # Usage
