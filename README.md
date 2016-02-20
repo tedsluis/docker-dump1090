@@ -202,6 +202,6 @@ Youtube: https://www.youtube.com/watch?v=h4YyFDTS6CQ
 alt="dump1090-mutability with heatmap & radarview" width="600" height="400" border="10" /></a>
  
 
-Ted Sluis
+Ted Sluis  
 ted.sluis@gmail.com
 
