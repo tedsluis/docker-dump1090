@@ -48,7 +48,7 @@ alt="dump1090-mutability with heatmap & radarview" width="600" height="400" bord
 # Usage
 
 ## Download and build
-This step is optional. You can skip this and continue at 'Run it:'. 
+This step is optional. You can skip this and continue at 'Run it:'.   
 Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without):  
 ````
 $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
