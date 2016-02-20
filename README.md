@@ -48,7 +48,7 @@ alt="dump1090-mutability with heatmap & radarview" width="600" height="400" bord
 # Usage
 
 ## Download and build
-This step is optional. You can skip this and continue at 'Run it:'.
+This step is optional. You can skip this and continue at 'Run it:'. 
 Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without):  
 ````
 $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
@@ -83,6 +83,8 @@ $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15 /usr/sha
 To use th GUI, go to your browser and type:
 http://IPADDRESS_DOCKERHOST:8080/dump1090 
 
+
+## Run multiple containers
 To run multiple dump1090 docker containers on the same host (past the following 4 lines to the commandline all at ones):
 ````
 for i in {81..99} 
@@ -91,7 +93,6 @@ docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1.15_heatm
 done
 ```` 
 
-## Check it
 Check if they are really running:
 ````
 $ docker ps
