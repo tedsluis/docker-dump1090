@@ -57,7 +57,7 @@ Watch my dump1090 fork with heatmap and rangeview in the Google cloud: http://13
 
 # Usage
 
-### Download and build
+### Download 
 This step is optional: If you don't build the image your self it will be downloaded the first time you try to run it. In case continue at 'Run it:'.   
 Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without):  
 ````
@@ -65,6 +65,16 @@ $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerf
 or
 $ wget -O dockerfile https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.org
 ````
+
+At this stage you may want to edit the dockerfile and change, for example:
+
+* the time zone.
+* the URL of your own config files (config.js and dump1090-mutability).
+* your own ADS-B BEAST source IP address.
+* the URL of your own heatmapdata.csv and rangeview.kml files (if you use the heatmap & rangeview source).
+* the URL of your own dump1090-mutability fork.
+
+Check the comments inside the dockerfile for more info.
 
 Build the image (select the version you want):
 ````
@@ -192,10 +202,10 @@ Of course you should modify the dockerfile and configure the location of your ow
 
 # 30005 Data source
 
-This dump1090 doesn't collect ADS-B data using an antenna and a RTL SDR receiver. 
-Instead it receives data using the BEAST_INPUT_PORT (30104, previously known as 30004).
+This dump1090 doesn't collect ADS-B data using an antenna and a RTL SDR receiver.  
+Instead it receives data using the BEAST_INPUT_PORT (30104, previously known as 30004).  
 
-In side the container I use netcat to copy 30005 traffic from an remote dump1090 to the local 30104 BEAST input port.
+In side the container I use netcat to copy 30005 traffic from an remote dump1090 to the local 30104 BEAST input port.  
 The remote dump1090 is located in the Google cloud running on a 60 days free trail (valid until 9 april 2016 and most likely continued with an other free trail account). This remote dump1090 gets his 30005 BEAST data from a raspberry pi located in my home in Utrecht, in the Netherlands. I leave this service available as long as it is not abused.
 
 # Build & run video
