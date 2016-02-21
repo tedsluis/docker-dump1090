@@ -39,8 +39,9 @@ The following images are available at docker hub https://hub.docker.com/r/tedslu
 
 At FlightAware ADS-B flight tracking forum you can find two related topics:
 
+* [Running Dump1090 Mutability in Docker container](http://discussions.flightaware.com/post184999.html)
 * [Heatmap & range/altitude view for dump1090-mutability v1.15](http://discussions.flightaware.com/post180185.html)
-* [Running Dump1090 Mutability in Docker container](http://discussions.flightaware.com/post184999.html#p184999)
+* [Raspberry Pi + Docker = From blank SD to feeding in 15 mins](http://discussions.flightaware.com/post187461.html)
 
 # Screenshot and video
 
