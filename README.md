@@ -57,7 +57,7 @@ Watch my dump1090 fork with heatmap and rangeview in the Google cloud: http://13
 
 # Usage
 
-### Download 
+### Download dockerfile
 This step is optional: If you don't build the image your self it will be downloaded the first time you try to run it. In case continue at 'Run it:'.   
 Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without):  
 ````
@@ -76,7 +76,7 @@ At this stage you may want to edit the dockerfile and change, for example:
 
 Check the comments inside the dockerfile for more info.
 
-### Build it:
+### Build it
 Build the image (select the version you want):
 ````
 $ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
