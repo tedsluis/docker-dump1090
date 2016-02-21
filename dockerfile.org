@@ -33,6 +33,7 @@ RUN apt-get update && apt-get install -y \
  	git       \
         lighttpd  \
 	netcat	  \
+	net-tools \
 	python2.7 \
 	wget
 
