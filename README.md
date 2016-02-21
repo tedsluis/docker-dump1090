@@ -76,6 +76,7 @@ At this stage you may want to edit the dockerfile and change, for example:
 
 Check the comments inside the dockerfile for more info.
 
+### Build it:
 Build the image (select the version you want):
 ````
 $ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
