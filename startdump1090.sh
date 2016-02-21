@@ -32,7 +32,7 @@ fi
 #
 # Check if port 30005 is open:
 $netcatmessage=$(/bin/nc -z -v -w5 $ip 30005)
-if if [[ $netcatmessage =~ succeeded ]]; then
+if [[ $netcatmessage =~ succeeded ]]; then
 	echo "Port 30005 of $ip is open: '$netcatmessage'"
 else
 	echo "Port 30005 of $ip seems to be closed: '$netcatmessage'"
