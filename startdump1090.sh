@@ -31,8 +31,7 @@ else
 fi
 #
 # Check if port 30005 is open:
-netcatmessage=$(/bin/nc -z -v -w5 $ip 30005 | grep 30005)
-echo "answer from $ip port 30005: '$netcatmessage'"
+/bin/nc -z -v -w5 $ip 30005
 #
 # Start the web server:
 /usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf &
@@ -46,6 +45,7 @@ while true
         do
         sleep 2
 	# copy BEAST-format traffic from a remote dump1090 (port 30005) to the container (port 30104).
+	/bin/netstat | grep 30
 	echo "nc $ip 30005 | nc localhost 30104" 
         /bin/nc  $ip 30005 | /bin/nc localhost 30104
 	echo "Connection with ${ip}:30005 broken. Retry...."
