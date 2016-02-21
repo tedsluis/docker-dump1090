@@ -31,17 +31,8 @@ else
 fi
 #
 # Check if port 30005 is open:
-netcatmessage=$(/bin/nc -z -v -w5 $ip 30005)
+netcatmessage=$(/bin/nc -z -v -w5 $ip 30005 | grep 30005)
 echo "answer from $ip port 30005: '$netcatmessage'"
-if [[ $netcatmessage =~ succeeded ]]; then
-	echo "Port 30005 of $ip is open!"
-else
-	echo "Port 30005 of $ip seems to be closed!"
-	echo "Sorry, exiting....."
-	exit 3;
-fi
-#
-echo "Trying to get BEAST-format data from ${ip}:30005."
 #
 # Start the web server:
 /usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf &
@@ -49,6 +40,7 @@ echo "Trying to get BEAST-format data from ${ip}:30005."
 # Start dump190:
 /etc/init.d/dump1090-mutability start &
 #
+echo "Trying to get BEAST-format data from ${ip}:30005."
 # Never ending loop in order to reconnect when the connection ever gets broken:
 while true
         do
