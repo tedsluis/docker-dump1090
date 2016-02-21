@@ -92,7 +92,7 @@ or
 $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15
 ````
 
-note: You can changes the setting remote BEAST input source in the startdump1090.sh and rebuild the docker image. Or you can specify you own remote source dump1090 IP address like this:
+note: You can changes the setting remote ADS-B BEAST input source in the startdump1090.sh or in the dockerfile and rebuild the docker image. Or you can specify you own remote BEAST source dump1090 IP address like this:
 
 ````
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
@@ -118,6 +118,7 @@ Check if they are really running:
 ````
 $ docker ps
 ````
+[![Dump1090 docker stats](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)
 
 They all get a different port name which you can use in your web browser:
 
@@ -151,11 +152,19 @@ Check the resource consumption per docker container and notice that it is very l
 $ docker stats $(docker ps -a -q)
 ````
 A containers consumes only around 20MB memory and 2% CPU (of one of your cores).
+[![Dump1090 docker stats](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_stats.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_stats.png)
 
 Only the dump1090, the lighttp web server and the netcat (nc) services are running:
 ````
 docker top <container_id>
 ````
+[![Dump1090 docker top](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_top.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_top.png)
+
+View the container log
+````
+docker logs <container_id>
+````
+[![Dump1090 docker top](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_logs.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_logs.png)
 
 To stop a container, use:
 ````
