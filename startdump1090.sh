@@ -45,7 +45,7 @@ while true
         do
         sleep 2
 	# copy BEAST-format traffic from a remote dump1090 (port 30005) to the container (port 30104).
-	/bin/netstat | grep 30
+	/bin/netstat 
 	echo "nc $ip 30005 | nc localhost 30104" 
         /bin/nc  $ip 30005 | /bin/nc localhost 30104
 	echo "Connection with ${ip}:30005 broken. Retry...."
