@@ -68,7 +68,6 @@ $ wget -O dockerfile https://raw.githubusercontent.com/tedsluis/docker-dump1090/
 ### Tweak the dockerfile
 Optional:At this stage you may want to edit the dockerfile and change, for example:
 
-* the time zone.
 * the URL of your own config files (config.js and dump1090-mutability).
 * your own ADS-B BEAST source IP address.
 * the URL of your own heatmapdata.csv and rangeview.kml files (if you use the heatmap & rangeview source).
