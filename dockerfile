@@ -62,7 +62,9 @@ RUN cd /tmp          && dpkg -i dump1090-mutability_1.15~dev_amd64.deb
 RUN wget -O /usr/share/dump1090-mutability/html/heatmapdata.csv https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/heatmapdata.csv 
 
 # Download config files.
-# note: If you use other config files, be sure you configure them before building the image. Don't use the default config files, because you won't be able to configure them!
+# notes: 
+# The is the place where you can replace the config files with yourn own URL's.
+# If you use other config files, be sure you configure them before building the image. Don't use the default config files, because you won't be able to configure them!
 RUN wget -O /usr/share/dump1090-mutability/html/config.js       https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/config.js   
 RUN wget -O /etc/default/dump1090-mutability                    https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dump1090-mutability
 
@@ -77,6 +79,10 @@ RUN lighty-enable-mod dump1090
 # note: Change the default IP address of the remote dump1090 source in the startdump1090.sh script or specify the script with the IP address while you start the container!
 RUN wget -O /usr/share/dump1090-mutability/startdump1090.sh https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/startdump1090.sh
 RUN chmod 775 /usr/share/dump1090-mutability/startdump1090.sh
+
+# This is the place where you can put your own ADS-B BEAST source.
+# Replace the IP address with a dump1090 instance.
+RUN sed -i 's/^([\s]+)ip="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"/${1}ip="130.211.68.85"/g' /usr/share/dump1090-mutability/startdump1090.sh
 
 # Add labels
 LABEL architecture="AMD64,X86_64"
