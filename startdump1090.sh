@@ -25,17 +25,19 @@ fi
 #
 # Check if IP address is reachable:
 if /bin/ping -c 1 $ip &> /dev/null ; then
-	echo "IP address $ip is reachable unsing ping!"
+	echo "IP address $ip is reachable using ping!"
 else
 	echo "IP address $1 is unreachable using ping!"
 fi
 #
 # Check if port 30005 is open:
 $netcatmessage=$(/bin/nc -z -v -w5 $ip 30005)
+echo "answer from $ip port 30005: '$netcatmessage'"
 if [[ $netcatmessage =~ succeeded ]]; then
-	echo "Port 30005 of $ip is open: '$netcatmessage'"
+	echo "Port 30005 of $ip is open!"
 else
-	echo "Port 30005 of $ip seems to be closed: '$netcatmessage'"
+	echo "Port 30005 of $ip seems to be closed!"
+	echo "Sorry, exiting....."
 	exit 3;
 fi
 #
