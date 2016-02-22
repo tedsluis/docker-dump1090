@@ -32,7 +32,7 @@ In my fork of dump1090-mutability v1.15 I have added the following features:
 The following images are available at docker hub https://hub.docker.com/r/tedsluis/dump1090-mutability:
 
 * tedsluis/dump1090-mutability:v1.15 (latest version by obj)
-* tedsluis/dump1090-mutability:1.15_heatmaprangeview (my fork)
+* tedsluis/dump1090-mutability:v1.15_heatmaprangeview (my fork)
 
 They are automated build by docker hub using Github intergratio, see [Automated Builds on Docker Hub](https://docs.docker.com/docker-hub/builds/)  
 
