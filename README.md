@@ -177,6 +177,8 @@ View the container log
 ````
 docker logs <container_id>
 ````
+This gives you the output from what is going on inside the container. The output of the last line in the dockerfile: 'CMD ["/bin/bash", "/usr/share/dump1090-mutability/startdump1090.sh"]'.  
+If you look in the [startdump1090.sh](https://github.com/tedsluis/docker-dump1090/blob/master/startdump1090.sh) script you can understand the meaning the output.   
 No errors. Everything looks okay.
 [![Dump1090 docker top](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_logs.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_logs.png)
 
