@@ -47,9 +47,7 @@ At FlightAware ADS-B flight tracking forum you can find two related topics:
 # Screenshot and video
 
 [Using the dump1090-mutability with a heatmap and radarview (on youtube)](https://www.youtube.com/watch?v=Qz4XSFRjLTI)
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=Qz4XSFRjLTI"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg" 
-alt="dump1090-mutability with heatmap & radarview" width="600" height="400" border="10" /></a>
+[![Dump1090 rangeview](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg)](https://www.youtube.com/watch?v=Qz4XSFRjLTI)
 
 # Live view
 Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.68.85/dump1090/gmap.html   
@@ -244,5 +242,7 @@ alt="dump1090-mutability with heatmap & radarview" width="600" height="400" bord
  
   
 Ted Sluis  
-ted.sluis@gmail.com
-
+ted.sluis@gmail.com  
+https://github.com/tedsluis  
+https://hub.docker.com/r/tedsluis  
+[https://www.youtube.com/tedsluis](https://www.youtube.com/channel/UCnR4rVCm_8gCjY_m3t1ExgA)  
