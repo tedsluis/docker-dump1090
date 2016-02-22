@@ -101,7 +101,7 @@ or
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
 ````
 
-### Try dump1090 in the bwowser
+### Try dump1090 in the browser
 To use th GUI, go to your browser and type:
 http://IPADDRESS_DOCKERHOST:8080/dump1090 
 
