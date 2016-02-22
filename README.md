@@ -218,12 +218,12 @@ These dockerfiles will override the default Dump1090 config files:
 * /usr/share/dump1090-mutability/html/config.js   
 * /etc/default/dump1090-mutability   
 
-This way my personal settings like lat/lon, metric and the location of my 'radarview.kml' file are configured.
+This way my personal settings like lat/lon, metric and the location of my 'radarview.kml' file are configured.  
 
 A 'heatmapdata.csv' file is downloaded from my personal dropbox to this image. 
-The 'raderview.kml' is hosted from the same dropbox. It is not copied to the container, since it must be publicly accessible for the Google Map API.
+The 'raderview.kml' is hosted from the same dropbox. It is not copied to the container, since it must be publicly accessible for the Google Map API.  
 
-Of course you should modify the dockerfile and configure the location of your own config files, heatmapdata.csv and radarview.kml files and your own remote BEAST IP address.
+Of course you should modify the dockerfile and configure the location of your own config files, heatmapdata.csv and radarview.kml files and your own remote BEAST IP address.  
 
 # 30005 Data source
 
@@ -236,10 +236,7 @@ The remote dump1090 is located in the Google cloud running on a 60 days free tra
 # Build & run video
 
 [Build & run the dump1090-mutability docker image from scratch (on Youtube)](https://www.youtube.com/watch?v=h4YyFDTS6CQ)
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=h4YyFDTS6CQ"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090-build.png"
-alt="dump1090-mutability with heatmap & radarview" width="600" height="400" border="10" /></a>
- 
+[![Install Dump1090 docker](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090-build.png)](https://www.youtube.com/watch?v=h4YyFDTS6CQ) 
   
 Ted Sluis  
 ted.sluis@gmail.com  
