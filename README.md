@@ -1,7 +1,7 @@
 # Docker image for Dump1090 Mutability
 
 Try the dump1090 application in an easy way.   
-You only need a X86_64 or AMD64 Linux docker host. No RTL-SDR receiver required.
+You only need a X86_64 or AMD64 Linux docker host. No RTL-SDR receiver is required.
 
 While running this dump1090 docker container you are able to view airplanes in your web browser.   
 You can always rebuild it in minutes from the latest source code.
@@ -51,14 +51,14 @@ At FlightAware ADS-B flight tracking forum you can find two related topics:
 alt="dump1090-mutability with heatmap & radarview" width="600" height="400" border="10" /></a>
 
 # Live view
-Watch my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.68.85/dump1090/gmap.html   
+Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.68.85/dump1090/gmap.html   
 (This dump1090 runs on a 60-day free trail that is available until 9 april 2016, more info at https://cloud.google.com/free-trial/)
 
 
 # Usage
 
-### Download dockerfile
-This step is optional: If you don't build the image your self it will be downloaded the first time you try to run it. In case continue at 'Run it:'.   
+### Download the dockerfile
+This step is optional: If you don't build the image your self it will be downloaded the first time you try to run it. In this case continue at 'Run a docker container:'.   
 Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without):  
 ````
 $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
@@ -66,23 +66,25 @@ or
 $ wget -O dockerfile https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.org
 ````
 ### Tweak the dockerfile
-Optional:At this stage you may want to edit the dockerfile and change, for example:
+Optional:At this stage you may want to edit the dockerfile and change for example:
 
 * the URL of your own config files (config.js and dump1090-mutability).
 * your own ADS-B BEAST source IP address.
 * the URL of your own heatmapdata.csv and rangeview.kml files (if you use the heatmap & rangeview source).
 * the URL of your own dump1090-mutability fork.
 
-Check the comments inside the dockerfile for more info.
+notes:   
+Check the comments inside the dockerfiles for more info.
+You can host your own config , heatmap and rangeview files in Dropbox, Github or on a webserver and use their URL's in the dockerfile.
 
-### Build it
+### Build the docker image
 Build the image (select the version you want):
 ````
 $ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
 or
 $ docker build -t tedsluis/dump1090-mutability:v1.15 .
 ````
-### Run it
+### Run a docker container
 Run it (select the version you want):    
 If you did not build the image yourself it will be downloaded from the Docker Hub.
 ````
@@ -99,12 +101,12 @@ or
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
 ````
 
-### Use it
+### Try dump1090 in the bwowser
 To use th GUI, go to your browser and type:
 http://IPADDRESS_DOCKERHOST:8080/dump1090 
 
 
-### Run multiple containers
+### Run multiple docker containers
 To run multiple dump1090 docker containers on the same host (past the following 4 lines to the commandline all at ones):
 ````
 for i in {81..99} 
@@ -113,22 +115,34 @@ docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1.15_heatm
 done
 ```` 
 
+And an other 20 containers with the original v1.15 verson:
+````
+for i in {60..79}
+do
+docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1.15
+done
+````
+
 Check if they are really running:
 ````
 $ docker ps
 ````
+An example of 20 containers with dump1090-mutability with heatmap & rangeview and 20 containers without:
 [![Dump1090 docker stats](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)
 
 They all get a different port name which you can use in your web browser:
 
-http://IPADDRESS_DOCKERHOST:8081/dump1090/gmap.html
-http://IPADDRESS_DOCKERHOST:8082/dump1090/gmap.html
-http://IPADDRESS_DOCKERHOST:8084/dump1090/gmap.html
-http://IPADDRESS_DOCKERHOST:8085/dump1090/gmap.html
-http://IPADDRESS_DOCKERHOST:8086/dump1090/gmap.html
-http://IPADDRESS_DOCKERHOST:8087/dump1090/gmap.html
-http://IPADDRESS_DOCKERHOST:8088/dump1090/gmap.html
-http://IPADDRESS_DOCKERHOST:8089/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8060/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8061/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8062/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8063/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8064/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8065/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8066/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8067/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8068/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8069/dump1090/gmap.html
+(and so on, you get the idea)   
 http://IPADDRESS_DOCKERHOST:8090/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8091/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8092/dump1090/gmap.html
@@ -140,7 +154,7 @@ http://IPADDRESS_DOCKERHOST:8097/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8098/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8099/dump1090/gmap.html
 
-You are probably thinking "why run 20 or more dump1090 containers on one host?". Well, for a couple of reasons:
+You are probably thinking "why run 40 or more dump1090 containers on one host?". Well, for a couple of reasons:
 
 * To proof that it is possible without any performance issue. Infact you can run hundreds of dump1090 containers on a linux host with just 4GB of RAM and a quad core.
 * To show new possibilities. Imagine running hundreds of dump1090 containers in the cloud serving thousands of visitors. A load balancer could be used to distribute the load over the dump1090 instances.
@@ -163,6 +177,7 @@ View the container log
 ````
 docker logs <container_id>
 ````
+No errors. Everything looks okay.
 [![Dump1090 docker top](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_logs.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_logs.png)
 
 To stop a container, use:
