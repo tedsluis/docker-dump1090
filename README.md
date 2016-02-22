@@ -235,7 +235,7 @@ The remote dump1090 is located in the Google cloud running on a 60 days free tra
 
 # Build & run video
 
-[Build & run the dump1090-mutability docker image from scratch (on Youtube)](https://www.youtube.com/watch?v=h4YyFDTS6CQ)
+[Build & run the dump1090-mutability docker image from scratch (on Youtube)](https://www.youtube.com/watch?v=h4YyFDTS6CQ) 
 [![Install Dump1090 docker](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090-build.png)](https://www.youtube.com/watch?v=h4YyFDTS6CQ) 
   
 Ted Sluis  
