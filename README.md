@@ -34,7 +34,8 @@ The following images are available at docker hub https://hub.docker.com/r/tedslu
 * tedsluis/dump1090-mutability:v1.15 (latest version by obj)
 * tedsluis/dump1090-mutability:v1.15_heatmaprangeview (my fork)
 
-They are automated build by docker hub using Github intergratio, see [Automated Builds on Docker Hub](https://docs.docker.com/docker-hub/builds/)  
+They are automated build by docker hub using Github intergration, see [build details](https://hub.docker.com/r/tedsluis/dump1090-mutability/builds/).  
+More info at [Automated Builds on Docker Hub](https://docs.docker.com/docker-hub/builds/).  
 
 # FlightAware ADS-B flight tracking forum
 
@@ -65,7 +66,7 @@ or
 $ wget -O dockerfile https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.org
 ````
 ### Tweak the dockerfile
-Optional:At this stage you may want to edit the dockerfile and change for example:
+Optional: At this stage you may want to edit the dockerfile and change for example:
 
 * the URL of your own config files (config.js and dump1090-mutability).
 * your own ADS-B BEAST source IP address.
