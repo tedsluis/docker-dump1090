@@ -23,16 +23,6 @@ else
 	ip="130.211.68.85"
 fi
 #
-# Check if IP address is reachable:
-if /bin/ping -c 1 $ip &> /dev/null ; then
-	echo "IP address $ip is reachable using ping!"
-else
-	echo "IP address $1 is unreachable using ping!"
-fi
-#
-# Check if port 30005 is open:
-/bin/nc -z -v -w5 $ip 30005
-#
 # Start the web server:
 /usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf &
 #
@@ -43,10 +33,27 @@ echo "Trying to get BEAST-format data from ${ip}:30005."
 # Never ending loop in order to reconnect when the connection ever gets broken:
 while true
         do
-        sleep 2
-	# copy BEAST-format traffic from a remote dump1090 (port 30005) to the container (port 30104).
+	#
+	# Check if IP address is reachable:
+	if /bin/ping -c 1 $ip &> /dev/null ; then
+		echo "IP address $ip is reachable using ping!"
+	else
+		echo "IP address $ip is unreachable using ping!"
+	fi
+	#
+	# Check if port 30005 is open (5 seconds timeout):
+	echo -n "Remote port check:"
+	/bin/nc -z -v -w5 $ip 30005
+	#
+	# Netstat info
+	echo "Netstat:"
 	/bin/netstat 
+	#
+	# copy BEAST-format traffic from a remote dump1090 (port 30005) to the container (port 30104).
 	echo "nc $ip 30005 | nc localhost 30104" 
         /bin/nc  $ip 30005 | /bin/nc localhost 30104
 	echo "Connection with ${ip}:30005 broken. Retry...."
+	#
+	# Wait 2 seconds before retry
+        sleep 2
 done
