@@ -42,7 +42,7 @@ while true
 	fi
 	#
 	# Check if port 30005 is open (5 seconds timeout):
-	echo -n "Remote port check:"
+	echo "Remote port check:"
 	/bin/nc -z -v -w5 $ip 30005
 	#
 	# Netstat info
