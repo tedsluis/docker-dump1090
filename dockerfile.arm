@@ -60,12 +60,15 @@ RUN apt-get update && apt-get upgrade -y
 
 # Prepare for install
 RUN ln /usr/bin/python2.7 /usr/bin/python2
+ENV CC=/usr/bin/gcc-4.9 CXX=/usr/bin/g++-4.9
+RUN ln -s /usr/bin/gcc-4.9 /usr/bin/gcc
+RUN ln -s /usr/bin/g++-4.9 /usr/bin/g++
 RUN mkdir /tmp/dump1090
 
 # Clone, build and install dump1090 from source:
 RUN cd /tmp/dump1090 && git clone https://github.com/tedsluis/dump1090.git   /tmp/dump1090 
 RUN cd /tmp/dump1090 && dpkg-buildpackage -b
-RUN cd /tmp          && dpkg -i dump1090-mutability_1.15~dev_amd64.deb
+RUN cd /tmp          && dpkg -i dump1090-mutability_1.15~dev_armhf.deb
 
 # Download heatmapdata file:
 RUN wget -O /usr/share/dump1090-mutability/html/heatmapdata.csv https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/heatmapdata.csv 
