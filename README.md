@@ -1,19 +1,25 @@
-# Docker image for Dump1090 Mutability
+# Docker image for Dump1090-Mutability
 
-Try the dump1090 application in an easy way.   
-You only need a X86_64 or AMD64 Linux docker host. No RTL-SDR receiver is required.
+Try the dump1090 application in an easy way and run it in a Docker container.  
+No RTL-SDR receiver is required.  
+
+You have two options:
+
+* Run it on a X86_64 or AMD64 Linux [Docker](https://docs.docker.com/linux) host (Intel or AMD hardware). 
+* Run it on a Raspberry pi with raspbian and [Hypriot Docker](http://blog.hypriot.com/downloads/) (ARM hardware).
 
 While running this dump1090 docker container you are able to view airplanes in your web browser.   
-You can always rebuild it in minutes from the latest source code.
+You can always rebuild it in minutes from the latest source code (on a raspberry pi that is already running dump1090 and piaware it takes about a hour!).  
+Downloading the latest docker image from Docker hub takes a few minutes.  
 
 These docker images are based on dump1090-mutability v1.15 by Oliver Jowett -also known as Obj- and my own fork with heatmap and rangeview:
 
-* https://github.com/mutability/dump1090 (version v1.15)
-* https://github.com/tedsluis/dump1090 (version v1.15_heatmaprangeview)
+* https://github.com/mutability/dump1090 (version v1.15 and v1.15_arm)
+* https://github.com/tedsluis/dump1090 (version v1.15_heatmaprangeview and v1.15_heatmaprangeview_arm)
 
-Note: You must use the desired github source at build time and specify the dump1090 version (1.15 or v1.15_heatmaprangeview) upon runtime.
+Note: You must use the desired github source at build time and specify the dump1090 version (v1.15, v1.15_arm, v1.15_heatmaprangeview  or v1.15_heatmaprangeview_arm) upon runtime.
 
-It is build on the latest Debian image (X86_64,ADM64) according the default installation instruction by Obj. Some packages were added, because they are not default available in the official Debian Docker image. The way in which the Lighttpd and Dump1090 services are started is slidely different as is usual with containers. The configuration is of course without user interaction.
+These builds are based on the latest Debian image (X86_64,AMD64) or Raspbian image (ARM) according the default installation instruction by Obj. Some packages were added, because they are not default available in the Docker bases images. The way in which the Lighttpd and Dump1090 services are started is slightly different as is usual with containers. The configuration is of course without user interaction.
 
 # Heatmap & rangeview features
 
@@ -31,10 +37,13 @@ In my fork of dump1090-mutability v1.15 I have added the following features:
 
 The following images are available at docker hub https://hub.docker.com/r/tedsluis/dump1090-mutability:
 
-* tedsluis/dump1090-mutability:v1.15 (latest version by obj)
-* tedsluis/dump1090-mutability:v1.15_heatmaprangeview (my fork)
+* tedsluis/dump1090-mutability:v1.15 (latest version by obj for X86_64 / AMD64 hardware)
+* tedsluis/dump1090-mutability:v1.15_arm (latest version by obj for Raspberry pi / ARM hardware)
+* tedsluis/dump1090-mutability:v1.15_heatmaprangeview (my fork for X86_64 / AMD64 hardware)
+* tedsluis/dump1090-mutability:v1.15_heatmaprangeview_arm (my fork for Raspberry pi / ARM hardware)
 
-They are automated build by docker hub using Github intergration, see [build details](https://hub.docker.com/r/tedsluis/dump1090-mutability/builds/).  
+The X86_64/AMD64 images are automated builds by docker hub using Github intergration, see [build details](https://hub.docker.com/r/tedsluis/dump1090-mutability/builds/).  
+Unfortunately Docker Hub does not support automated build for ARM images currently, so those ARM images are builded manualy.   
 More info at [Automated Builds on Docker Hub](https://docs.docker.com/docker-hub/builds/).  
 
 # FlightAware ADS-B flight tracking forum
@@ -57,13 +66,26 @@ Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.
 
 # Usage
 
+### docker command and sudo 
+In the examples down here I have not used the 'sudo' command. Depending on the way you have implementated Docker (or Hypriot Docker) you may need to use 'sudo' in front every 'docker' command. For example:  
+````
+$ sudo docker version
+or 
+$ sudo docker stats $(sudo docker ps -a -q)
+````
+Otherwise you may get an error message telling that it cannot connect to the docker daemon!  
+
 ### Download the dockerfile
 This step is optional: If you don't build the image your self it will be downloaded the first time you try to run it. In this case continue at 'Run a docker container:'.   
-Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without):  
+Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without, the third and fourth are for ARM):  
 ````
 $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
 or
 $ wget -O dockerfile https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.org
+or
+$ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.arm
+or
+$ wget -O dockerfile https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.org.arm
 ````
 ### Tweak the dockerfile
 Optional: At this stage you may want to edit the dockerfile and change for example:
@@ -78,36 +100,51 @@ Check the comments inside the dockerfiles for more info.
 You can host your own config , heatmap and rangeview files in Dropbox, Github or on a webserver and use their URL's in the dockerfile.
 
 ### Build the docker image
-Build the image (select the version you want):
+Build the image (select the version you want, X86/AMD64 or ARM, with or without heatmap & rangview):
 ````
 $ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
 or
 $ docker build -t tedsluis/dump1090-mutability:v1.15 .
+or
+$ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview_arm .
+or
+$ docker build -t tedsluis/dump1090-mutability:v1.15_arm .
 ````
 ### Run a docker container
-Run it (select the version you want):    
+Run it (select the version you want, X86/AMD64 or ARM, with or without heatmap & rangview):    
 If you did not build the image yourself it will be downloaded from the Docker Hub.
 ````
 $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview
 or
 $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15
+or
+$ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview_arm
+or
+$ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15_arm
 ````
 
 note: You can changes the setting remote ADS-B BEAST input source in the startdump1090.sh or in the dockerfile and rebuild the docker image. Or you can specify you own remote BEAST source dump1090 IP address like this:
-
+(select the version you want, X86/AMD64 or ARM, with or without heatmap & rangview):  
 ````
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
 or
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15 /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
+or 
+$ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview_arm /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
+or
+$ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_arm /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
 ````
 
 ### Try dump1090 in the browser
-To use th GUI, go to your browser and type:
-http://IPADDRESS_DOCKERHOST:8080/dump1090 
-
+To use the GUI, go to your browser and type:
+http://IPADDRESS_DOCKERHOST:8080/dump1090   
+You may need to refresh your web browser a view times before you seen planes.
+Running on a raspberry pi it can take a while.   
 
 ### Run multiple docker containers
 To run multiple dump1090 docker containers on the same host (past the following 4 lines to the commandline all at ones):
+(If you are running Docker on ARM then add '_arm' to the version label!)  
+On a raspberry you can only run a couple of containers, because you run quickly out of memory, cpu and block io resources!  
 ````
 for i in {81..99} 
 do 
@@ -115,7 +152,8 @@ docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1.15_heatm
 done
 ```` 
 
-And an other 20 containers with the original v1.15 verson:
+And an other 20 containers with the original v1.15 version:
+(If you are running Docker on ARM then add '_arm' to the version label!)
 ````
 for i in {60..79}
 do
@@ -130,7 +168,7 @@ $ docker ps
 An example of 20 containers with dump1090-mutability with heatmap & rangeview and 20 containers without:
 [![Dump1090 docker stats](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)
 
-They all get a different port name which you can use in your web browser:
+Note: All containers must have a different port name which you can use in your web browser:
 
 http://IPADDRESS_DOCKERHOST:8060/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8061/dump1090/gmap.html
@@ -156,7 +194,7 @@ http://IPADDRESS_DOCKERHOST:8099/dump1090/gmap.html
 
 You are probably thinking "why run 40 or more dump1090 containers on one host?". Well, for a couple of reasons:
 
-* To proof that it is possible without any performance issue. Infact you can run hundreds of dump1090 containers on a linux host with just 4GB of RAM and a quad core.
+* To proof that it is possible without any performance issue. Infact you can run hundreds of dump1090 containers on a X86_64/AMD64 linux host with just 4GB of RAM and a quad core.
 * To show new possibilities. Imagine running hundreds of dump1090 containers in the cloud serving thousands of visitors. A load balancer could be used to distribute the load over the dump1090 instances.
 
 ### Manage the containers
