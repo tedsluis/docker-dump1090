@@ -66,7 +66,7 @@ RUN mkdir /tmp/dump1090
 
 # Clone, build and install dump1090 from source.
 RUN cd /tmp/dump1090 && git clone https://github.com/mutability/dump1090.git /tmp/dump1090 
-RUN cd /tmp/dump1090 && dpkg-buildpackage -b
+RUN cd /tmp/dump1090 && dpkg-buildpackage -b -d
 RUN cd /tmp          && dpkg -i dump1090-mutability_1.15~dev_armhf.deb
 
 # Download config files.
@@ -85,6 +85,10 @@ RUN lighty-enable-mod dump1090
 # note: Change the default IP address of the remote dump1090 source in the startdump1090.sh script or specify the script with the IP address while you start the container!
 RUN wget -O /usr/share/dump1090-mutability/startdump1090.sh https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/startdump1090.sh
 RUN chmod 775 /usr/share/dump1090-mutability/startdump1090.sh
+
+# This is the place where you can put your own ADS-B BEAST source.
+# Replace the IP address with a dump1090 instance.
+RUN sed -i 's/^([\s]+)ip="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"/${1}ip="130.211.68.85"/g' /usr/share/dump1090-mutability/startdump1090.sh
 
 # Add labels
 LABEL architecture="ARM,Hypriot"
