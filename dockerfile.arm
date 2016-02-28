@@ -44,9 +44,6 @@ RUN apt-get update && apt-get install -y \
 	python2.7        \
 	wget
 
-# Just in case:
-RUN rm  /usr/lib/*sdr*
-
 # Download and install required packages for building dump1090:
 RUN cd /tmp && wget https://github.com/mutability/librtlsdr/releases/download/v0.5.4_git-1/librtlsdr0_0.5.4.git-1_armhf.deb
 RUN cd /tmp && wget https://github.com/mutability/librtlsdr/releases/download/v0.5.4_git-1/librtlsdr-dev_0.5.4.git-1_armhf.deb
