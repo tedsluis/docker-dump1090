@@ -88,7 +88,7 @@ RUN chmod 775 /usr/share/dump1090-mutability/startdump1090.sh
 
 # Add labels
 LABEL architecture="ARM,Hypriot"
-LABEL dump1090version="v1.15"
+LABEL dump1090version="v1.15_arm"
 
 # Start lighttp web server, BEAST-format input (netcat) and Dump1090
 CMD ["/bin/bash", "/usr/share/dump1090-mutability/startdump1090.sh"]
