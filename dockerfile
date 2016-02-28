@@ -6,7 +6,7 @@
 # http://discussions.flightaware.com/post180185.html
 # https://www.youtube.com/watch?v=h4YyFDTS6CQ
 
-# This dockerfile can be used to build my fork of the original dump1090-mutability (v1.15) with the heatmap and rangeview features.
+# This dockerfile can be used to build my fork of the original dump1090-mutability (v1.15) with the heatmap and rangeview features on X86/AMD64 (Intel or AMD cpu's).
 
 # Build it yourself:  
 #                      $ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
