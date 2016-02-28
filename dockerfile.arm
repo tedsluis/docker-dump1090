@@ -7,16 +7,16 @@
 # https://www.youtube.com/watch?v=h4YyFDTS6CQ
 # http://blog.hypriot.com/downloads/
 
-# This dockerfile can be used to build my fork of the original dump1090-mutability (v1.15) with the heatmap and rangeview features on Raspberry pi / Hypriot Docker.
+# This dockerfile can be used to build my fork of the original dump1090-mutability (v1.15) with the heatmap and rangeview features on Raspberry pi (ARM)/Hypriot Docker.
 
 # Build it yourself:  
-#                      $ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview .
+#                      $ docker build -t tedsluis/dump1090-mutability:v1.15_heatmaprangeview_arm .
 
 # Run it:    
-#                      $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview
+#                      $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview_arm
                       
 # Or run it with a different BEAST source:    
-#                      $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview /usr/share/dump1090-mutability/startdump1090.sh <IP address of your own remote dump1090 source>
+#                      $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview_arm /usr/share/dump1090-mutability/startdump1090.sh <IP address of your own remote dump1090 source>
 
 FROM resin/rpi-raspbian:jessie
 
@@ -29,11 +29,14 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install required packages:
 RUN apt-get update && apt-get install -y \
 	apt-utils        \
+        ca-certificates  \
 	cron             \
 	curl	         \
 	debhelper        \
 	dialog           \
 	dpkg-dev         \ 
+        g++-4.9          \
+        gcc-4.9          \ 
  	git              \
 	librtlsdr-dev    \
 	libusb-1.0-0-dev \
