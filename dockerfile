@@ -71,6 +71,17 @@ RUN wget -O /usr/share/dump1090-mutability/html/heatmapdata.csv https://dl.dropb
 RUN wget -O /usr/share/dump1090-mutability/html/config.js       https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/config.js   
 RUN wget -O /etc/default/dump1090-mutability                    https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dump1090-mutability
 
+# Add terrain-limit rings. To enable this:
+# create a panorama for your receiver location on heywhatsthat.com
+# note the "view" value from the URL at the top of the panorama
+# i.e. the XXXX in http://www.heywhatsthat.com/?view=XXXX
+# fetch a json file from the API for the altitudes you want to see:
+# wget -O /usr/share/dump1090-mutability/html/upintheair.json \
+# 'http://www.heywhatsthat.com/api/upintheair.json?id=XXXX&refraction=0.25&alts=3048,9144'
+# NB: altitudes are in _meters_, you can specify a list of altitudes
+RUN wget -O /usr/share/dump1090-mutability/html/upintheair.json 'http://www.heywhatsthat.com/api/upintheair.json?id=M7R4MI9M&refraction=0.25&alts=100,1000,10000'
+
+
 # Open the firewall for http and incoming BEAST-format
 EXPOSE 80
 EXPOSE 30104
