@@ -19,7 +19,7 @@ These docker images are based on dump1090-mutability v1.15 by Oliver Jowett -als
 
 Note: You must use the desired github source at build time and specify the dump1090 version (v1.15, v1.15_arm, v1.15_heatmaprangeview  or v1.15_heatmaprangeview_arm) upon runtime.
 
-These builds are based on the latest Debian image (X86_64,AMD64) or Raspbian image (ARM) according the default installation instruction by Obj. Some packages were added, because they are not default available in the Docker bases images. The way in which the Lighttpd and Dump1090 services are started is slightly different as is usual with containers. The configuration is of course without user interaction.
+These builds are based on the latest [Debian Jessie Docker image (for X86_64,AMD64)](https://hub.docker.com/_/debian/) or [Raspbian Jessie Docker image (for ARM)](https://hub.docker.com/r/resin/rpi-raspbian/) according the default installation instruction by Obj. Some packages were added, because they are not default available in the Docker bases images. The way in which the Lighttpd and Dump1090 services are started is slightly different as is usual with containers. The configuration is of course without user interaction.
 
 # Heatmap & rangeview features
 
@@ -32,6 +32,15 @@ In my fork of dump1090-mutability v1.15 I have added the following features:
 * Provide movable legends for the altitude colors and range rings.
 * Toggle plane colors between Altitude colors and adb-s/mlat position colors.
 * Toggle the heatmap, the range/altitude view and the range rings on and off (including their panel and legends).
+
+# Screenshot and video
+
+[Using the dump1090-mutability with a heatmap and radarview (on youtube)](https://www.youtube.com/watch?v=Qz4XSFRjLTI)
+[![Dump1090 rangeview](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg)](https://www.youtube.com/watch?v=Qz4XSFRjLTI)
+
+# Live view
+Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.68.85/dump1090/gmap.html   
+(This dump1090 runs on a 60-day free trail that is available until 9 april 2016, more info at https://cloud.google.com/free-trial/)
 
 # Docker Hub
 
@@ -54,20 +63,10 @@ At FlightAware ADS-B flight tracking forum you can find two related topics:
 * [Heatmap & range/altitude view for dump1090-mutability v1.15](http://discussions.flightaware.com/post180185.html)
 * [Raspberry Pi + Docker = From blank SD to feeding in 15 mins](http://discussions.flightaware.com/post187461.html)
 
-# Screenshot and video
-
-[Using the dump1090-mutability with a heatmap and radarview (on youtube)](https://www.youtube.com/watch?v=Qz4XSFRjLTI)
-[![Dump1090 rangeview](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg)](https://www.youtube.com/watch?v=Qz4XSFRjLTI)
-
-# Live view
-Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.68.85/dump1090/gmap.html   
-(This dump1090 runs on a 60-day free trail that is available until 9 april 2016, more info at https://cloud.google.com/free-trial/)
-
-
 # Usage
 
 ### docker command and sudo 
-In the examples down here I have not used the 'sudo' command. Depending on the way you have implementated Docker (or Hypriot Docker) you may need to use 'sudo' in front every 'docker' command. For example:  
+In all the examples down here I have not used the 'sudo' command. Depending on the way you have implementated Docker (or Hypriot Docker) you may need to use 'sudo' in front every 'docker' command. For example:  
 ````
 $ sudo docker version
 or 
@@ -76,7 +75,7 @@ $ sudo docker stats $(sudo docker ps -a -q)
 Otherwise you may get an error message telling that it cannot connect to the docker daemon!  
 
 ### Download the dockerfile
-This step is optional: If you don't build the image your self it will be downloaded the first time you try to run it. In this case continue at 'Run a docker container:'.   
+This step is optional: If you don't build the image your self it will be downloaded the first time you try to run it. In this case skip the sections 'Download the dockerfile', 'Tweak the dockerfile' and 'Build the docker image' continue at ['Run a docker container:'](https://github.com/tedsluis/docker-dump1090#run-a-docker-container).   
 Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without, the third and fourth are for ARM):  
 ````
 $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
@@ -123,7 +122,7 @@ or
 $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15_arm
 ````
 
-note: You can changes the setting remote ADS-B BEAST input source in the startdump1090.sh or in the dockerfile and rebuild the docker image. Or you can specify you own remote BEAST source dump1090 IP address like this:
+note: You can changes the setting remote ADS-B BEAST input source in the startdump1090.sh or in the dockerfile and rebuild the docker image. It is easier (and your only option if you don't build the Docker image your self) to specify your own remote BEAST source dump1090 IP address like this (this can be any dump1090 with a RTL-SDR receiver):  
 (select the version you want, X86/AMD64 or ARM, with or without heatmap & rangview):  
 ````
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
@@ -142,7 +141,7 @@ You may need to refresh your web browser a view times before you seen planes.
 Running on a raspberry pi it can take a while.   
 
 ### Run multiple docker containers
-To run multiple dump1090 docker containers on the same host (past the following 4 lines to the commandline all at ones):
+To run multiple dump1090 docker containers on the same host (past the following 4 lines to the commandline all at ones):   
 (If you are running Docker on ARM then add '_arm' to the version label!)  
 On a raspberry you can only run a couple of containers, because you run quickly out of memory, cpu and block io resources!  
 ````
@@ -152,8 +151,8 @@ docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1.15_heatm
 done
 ```` 
 
-And an other 20 containers with the original v1.15 version:
-(If you are running Docker on ARM then add '_arm' to the version label!)
+And an other 20 containers with the original v1.15 version:   
+(If you are running Docker on ARM then add '_arm' to the version label!)   
 ````
 for i in {60..79}
 do
@@ -161,12 +160,12 @@ docker run -h dump${i} -d -p 80${i}:80  tedsluis/dump1090-mutability:v1.15
 done
 ````
 
-Check if they are really running:
+Check if they are really running:   
 ````
 $ docker ps
 ````
-An example of 20 containers with dump1090-mutability with heatmap & rangeview and 20 containers without:
-[![Dump1090 docker stats](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)
+An example of 20 containers with dump1090-mutability with heatmap & rangeview and 20 containers without:   
+[![Dump1090 docker stats](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)   
 
 Note: All containers must have a different port name which you can use in your web browser:
 
@@ -179,7 +178,7 @@ http://IPADDRESS_DOCKERHOST:8065/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8066/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8067/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8068/dump1090/gmap.html
-http://IPADDRESS_DOCKERHOST:8069/dump1090/gmap.html
+http://IPADDRESS_DOCKERHOST:8069/dump1090/gmap.html  
 (and so on, you get the idea)   
 http://IPADDRESS_DOCKERHOST:8090/dump1090/gmap.html
 http://IPADDRESS_DOCKERHOST:8091/dump1090/gmap.html
@@ -194,7 +193,7 @@ http://IPADDRESS_DOCKERHOST:8099/dump1090/gmap.html
 
 You are probably thinking "why run 40 or more dump1090 containers on one host?". Well, for a couple of reasons:
 
-* To proof that it is possible without any performance issue. Infact you can run hundreds of dump1090 containers on a X86_64/AMD64 linux host with just 4GB of RAM and a quad core.
+* To proof that it is possible without any performance issue. Infact you can run hundreds of dump1090 containers on a X86_64/AMD64 linux host with just 4GB of RAM and a quad core (or an ARM board with enough resources).
 * To show new possibilities. Imagine running hundreds of dump1090 containers in the cloud serving thousands of visitors. A load balancer could be used to distribute the load over the dump1090 instances.
 
 ### Manage the containers
@@ -259,23 +258,23 @@ These dockerfiles will override the default Dump1090 config files:
 
 This way my personal settings like lat/lon, metric and the location of my 'radarview.kml' file are configured.  
 
-A 'heatmapdata.csv' file is downloaded from my personal dropbox to this image. 
+A 'heatmapdata.csv' file is downloaded from my personal dropbox to this image.  
 The 'raderview.kml' is hosted from the same dropbox. It is not copied to the container, since it must be publicly accessible for the Google Map API.  
 
 Of course you should modify the dockerfile and configure the location of your own config files, heatmapdata.csv and radarview.kml files and your own remote BEAST IP address.  
 
 # 30005 Data source
 
-This dump1090 doesn't collect ADS-B data using an antenna and a RTL SDR receiver.  
+This dump1090 doesn't collect ADS-B data using an antenna and a RTL SDR receiver (although it can).   
 Instead it receives data using the BEAST_INPUT_PORT (30104, previously known as 30004).  
 
 In side the container I use netcat to copy 30005 traffic from an remote dump1090 to the local 30104 BEAST input port.  
-The remote dump1090 is located in the Google cloud running on a 60 days free trail (valid until 9 april 2016 and most likely continued with an other free trail account). This remote dump1090 gets his 30005 BEAST data from a raspberry pi located in my home in Utrecht, in the Netherlands. I leave this service available as long as it is not abused.
+The remote dump1090 is located in the Google cloud running on a 60 days free trail (valid until 9 april 2016 and most likely continued with an other free trail account). This remote dump1090 gets his 30005 BEAST data from a raspberry pi located in my home in Utrecht, in the Netherlands. I leave this service available as long as it is not abused.   
 
 # Build & run video
 
 [Build & run the dump1090-mutability docker image from scratch (on Youtube)](https://www.youtube.com/watch?v=h4YyFDTS6CQ) 
-[![Install Dump1090 docker](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090-build.png)](https://www.youtube.com/watch?v=h4YyFDTS6CQ) 
+[![Install Dump1090 docker](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090-build.png)](https://www.youtube.com/watch?v=h4YyFDTS6CQ)  
   
 Ted Sluis  
 ted.sluis@gmail.com  
