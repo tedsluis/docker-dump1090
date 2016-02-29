@@ -126,7 +126,7 @@ or
 $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15_arm
 ````
 
-You can run more then a single dump1090 container, but be sure that you use a different 'host name' (-h &lthost name&gt) and 'outside port number' (-p &ltoutside port:inside port&gt for every container!  
+You can run more then a single dump1090 container, but be sure that you use a different 'host name' (-h &lt;host name&gt;) and 'outside port number' (-p &lt;outside port:inside port&gt; for every container!  
 
 ### Run a docker container with an alternative remote source
 You can changes the setting remote ADS-B BEAST input source in the startdump1090.sh or in the dockerfile and rebuild the docker image. It is easier (and your only option if you don't build the Docker image your self) to specify your own remote BEAST source dump1090 IP address like this (this can be any dump1090 with a RTL-SDR receiver).   
