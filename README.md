@@ -57,7 +57,7 @@ More info at [Automated Builds on Docker Hub](https://docs.docker.com/docker-hub
 
 # FlightAware ADS-B flight tracking forum
 
-At FlightAware ADS-B flight tracking forum you can find two related topics:
+At FlightAware ADS-B flight tracking forum you can find three related topics:
 
 * [Running Dump1090 Mutability in Docker container](http://discussions.flightaware.com/post184999.html)
 * [Heatmap & range/altitude view for dump1090-mutability v1.15](http://discussions.flightaware.com/post180185.html)
@@ -75,7 +75,8 @@ $ sudo docker stats $(sudo docker ps -a -q)
 Otherwise you may get an error message telling that it cannot connect to the docker daemon!  
 
 ### Download the dockerfile
-This step is optional: If you don't build the image your self it will be downloaded the first time you try to run it. In this case skip the sections 'Download the dockerfile', 'Tweak the dockerfile' and 'Build the docker image' continue at ['Run a docker container:'](https://github.com/tedsluis/docker-dump1090#run-a-docker-container).   
+This step is optional: If you don't build the image your self it will be downloaded the first time you try to run it. In this case skip the sections 'Download the dockerfile', 'Tweak the dockerfile' and 'Build the docker image' continue at ['Run a docker container:'](https://github.com/tedsluis/docker-dump1090#run-a-docker-container).  
+ 
 Download the dockerfile (select the version you want: The first is with heatmap & rangeview, the seconds is without, the third and fourth are for ARM):  
 ````
 $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile  
@@ -111,7 +112,8 @@ $ docker build -t tedsluis/dump1090-mutability:v1.15_arm .
 ````
 ### Run a docker container
 Run it (select the version you want, X86/AMD64 or ARM, with or without heatmap & rangview):    
-If you did not build the image yourself it will be downloaded from the Docker Hub.
+
+note: If you did not build the image yourself it will be downloaded from the Docker Hub.
 ````
 $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview
 or
@@ -122,7 +124,9 @@ or
 $ docker run -d -h dump80 -p 8080:80 tedsluis/dump1090-mutability:v1.15_arm
 ````
 
-note: You can changes the setting remote ADS-B BEAST input source in the startdump1090.sh or in the dockerfile and rebuild the docker image. It is easier (and your only option if you don't build the Docker image your self) to specify your own remote BEAST source dump1090 IP address like this (this can be any dump1090 with a RTL-SDR receiver):  
+### Run a docker container with an alternative remote source
+You can changes the setting remote ADS-B BEAST input source in the startdump1090.sh or in the dockerfile and rebuild the docker image. It is easier (and your only option if you don't build the Docker image your self) to specify your own remote BEAST source dump1090 IP address like this (this can be any dump1090 with a RTL-SDR receiver).   
+
 (select the version you want, X86/AMD64 or ARM, with or without heatmap & rangview):  
 ````
 $ docker run -d -h dump01 -p 8080:80 tedsluis/dump1090-mutability:v1.15_heatmaprangeview /usr/share/dump1090-mutability/startdump1090.sh "your remote source dump1090 IP"
