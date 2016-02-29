@@ -49,7 +49,9 @@ The following images are available at docker hub https://hub.docker.com/r/tedslu
 * tedsluis/dump1090-mutability:v1.15 (latest version by obj for X86_64 / AMD64 hardware)
 * tedsluis/dump1090-mutability:v1.15_arm (latest version by obj for Raspberry pi / ARM hardware)
 * tedsluis/dump1090-mutability:v1.15_heatmaprangeview (my fork for X86_64 / AMD64 hardware)
-* tedsluis/dump1090-mutability:v1.15_heatmaprangeview_arm (my fork for Raspberry pi / ARM hardware)
+* tedsluis/dump1090-mutability:v1.15_heatmaprangeview_arm (my fork for Raspberry pi / ARM hardware)  
+
+Note: Correctly speaking, there is only one docker image called 'tedsluis/dump1090-mutability' and it has four different versions, identified by their version labels (v1.15, v1.15_arm, v1.15_heatmaprangeview or v1.15_heatmaprangeview_arm).
 
 The X86_64/AMD64 images are automated builds by docker hub using Github intergration, see [build details](https://hub.docker.com/r/tedsluis/dump1090-mutability/builds/).  
 Unfortunately Docker Hub does not support automated build for ARM images currently, so those ARM images are builded manualy.   
