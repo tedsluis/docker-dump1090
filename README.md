@@ -290,3 +290,4 @@ ted.sluis@gmail.com
 https://github.com/tedsluis  
 https://hub.docker.com/r/tedsluis  
 [https://www.youtube.com/tedsluis](https://www.youtube.com/channel/UCnR4rVCm_8gCjY_m3t1ExgA)  
+http://flightaware.com/adsb/stats/user/tedsluis
