@@ -39,7 +39,7 @@ In my fork of dump1090-mutability v1.15 I have added the following features:
 [![Dump1090 rangeview](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg)](https://www.youtube.com/watch?v=Qz4XSFRjLTI)
 
 # Live view
-Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.68.85/dump1090/gmap.html   
+Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.186.77/dump1090/gmap.html   
 (This dump1090 runs on a 60-day free trail that is available until 9 april 2016, more info at https://cloud.google.com/free-trial/)
 
 # Docker Hub

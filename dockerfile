@@ -96,7 +96,7 @@ RUN chmod 775 /usr/share/dump1090-mutability/startdump1090.sh
 
 # This is the place where you can put your own ADS-B BEAST source.
 # Replace the IP address with a dump1090 instance.
-RUN sed -i 's/^([\s]+)ip="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"/${1}ip="130.211.68.85"/g' /usr/share/dump1090-mutability/startdump1090.sh
+RUN sed -i 's/^([\s]+)ip="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"/${1}ip="130.211.186.77"/g' /usr/share/dump1090-mutability/startdump1090.sh
 
 # Add labels
 LABEL architecture="AMD64,X86_64"
