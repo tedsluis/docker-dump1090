@@ -85,7 +85,7 @@ $ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerf
 or
 $ wget -O dockerfile https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.org
 or
-$ wget https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.arm
+$ wget -O dockerfile https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.arm
 or
 $ wget -O dockerfile https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/dockerfile.org.arm
 ````
