@@ -40,7 +40,7 @@ In my fork of dump1090-mutability v1.15 I have added the following features:
 
 # Live view
 Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.186.77/dump1090/gmap.html   
-(This dump1090 runs on a 60-day free trail that is available until 9 april 2016, more info at https://cloud.google.com/free-trial/)
+(This dump1090 runs on a 60-day free trail that is available until 20 june 2016, more info at https://cloud.google.com/free-trial/)
 
 # Docker Hub
 
@@ -278,7 +278,7 @@ This dump1090 doesn't collect ADS-B data using an antenna and a RTL SDR receiver
 Instead it receives data using the BEAST_INPUT_PORT (30104, previously known as 30004).  
 
 In side the container I use netcat to copy 30005 traffic from an remote dump1090 to the local 30104 BEAST input port.  
-The remote dump1090 is located in the Google cloud running on a 60 days free trail (valid until 9 april 2016 and most likely continued with an other free trail account). This remote dump1090 gets his 30005 BEAST data from a raspberry pi located in my home in Utrecht, in the Netherlands. I leave this service available as long as it is not abused.   
+The remote dump1090 is located in the Google cloud running on a 60 days free trail (valid until 20 june 2016 and most likely continued with an other free trail account). This remote dump1090 gets his 30005 BEAST data from a raspberry pi located in my home in Utrecht, in the Netherlands. I leave this service available as long as it is not abused.   
 
 # Build & run video
 
