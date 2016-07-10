@@ -20,7 +20,7 @@ if [ $# -eq 1 ] ; then
 	fi
 else 	
 	# Default IP address of remote dump1090 source (currently a dump1090 instance in the google cloud):
-	ip="130.211.186.77"
+	ip="130.211.110.109"
 fi
 #
 # Start the web server:
