@@ -36,7 +36,7 @@ In my fork of dump1090-mutability v1.15 I have added the following features:
 # Screenshot and video
 
 [Using the dump1090-mutability with a heatmap and radarview (on youtube)](https://www.youtube.com/watch?v=Qz4XSFRjLTI)
-[![Dump1090 rangeview](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090.jpg)](https://www.youtube.com/watch?v=Qz4XSFRjLTI)
+[![Dump1090 rangeview](https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/img/dump1090.jpg)](https://www.youtube.com/watch?v=Qz4XSFRjLTI)
 
 # Live view
 Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.110.109/dump1090/gmap.html   
@@ -173,7 +173,7 @@ Check if they are really running:
 $ docker ps
 ````
 An example of 20 containers with dump1090-mutability with heatmap & rangeview and 20 containers without:   
-[![Dump1090 docker stats](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_ps.png)   
+[![Dump1090 docker stats](https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/img/docker_ps.png)](https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/img/docker_ps.png)   
 
 Note: All containers must have a different port name which you can use in your web browser:
 
@@ -210,13 +210,13 @@ Check the resource consumption per docker container and notice that it is very l
 $ docker stats $(docker ps -a -q)
 ````
 A containers consumes only around 20MB memory and 2% CPU (of one of your cores).
-[![Dump1090 docker stats](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_stats.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_stats.png)
+[![Dump1090 docker stats](https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/img/docker_stats.png)](https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/img/docker_stats.png)
 
 Only the dump1090, the lighttp web server and the netcat (nc) services are running:
 ````
 docker top <container_id>
 ````
-[![Dump1090 docker top](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_top.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_top.png)
+[![Dump1090 docker top](https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/img/docker_top.png)](https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/img/docker_top.png)
 
 View the container log
 ````
@@ -225,7 +225,7 @@ docker logs <container_id>
 This gives you the output from what is going on inside the container. The output of the last line in the dockerfile: 'CMD ["/bin/bash", "/usr/share/dump1090-mutability/startdump1090.sh"]'.  
 If you look in the [startdump1090.sh](https://github.com/tedsluis/docker-dump1090/blob/master/startdump1090.sh) script you can understand the meaning the output.   
 No errors. Everything looks okay.
-[![Dump1090 docker top](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_logs.png)](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/docker_logs.png)
+[![Dump1090 docker top](https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/img/docker_logs.png)](https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/img/docker_logs.png)
 
 To stop a container, use:
 ````
@@ -283,7 +283,7 @@ The remote dump1090 is located in the Google cloud running on a 60 days free tra
 # Build & run video
 
 [Build & run the dump1090-mutability docker image from scratch (on Youtube)](https://www.youtube.com/watch?v=h4YyFDTS6CQ) 
-[![Install Dump1090 docker](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/dump1090-build.png)](https://www.youtube.com/watch?v=h4YyFDTS6CQ)  
+[![Install Dump1090 docker](https://raw.githubusercontent.com/tedsluis/docker-dump1090/master/img/dump1090-build.png)](https://www.youtube.com/watch?v=h4YyFDTS6CQ)  
   
 Ted Sluis  
 ted.sluis@gmail.com  
